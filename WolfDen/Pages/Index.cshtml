@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row Index">
+    <div class="col-md-4" style="text-align:center;">
+        <img height="600" src="~/Images/art/aw2-nell.png" />
+    </div>
+    <div class="col-md-6 Message">
+        <div id="speechBox" class="bg-white">
+            <img id="speechBoxImg" src="~/Images/art/speechBox.png" />
+            <h1 class="display-4">Welcome</h1>
+            <p>Want to play some <a href="https://en.wikipedia.org/wiki/Advance_Wars">Advance Wars</a> with your friends? Create an account and click <a asp-area="" asp-page="/Host">here</a>.</p>
+            <p>Never heard of Advance Wars? Click <a asp-area="" asp-page="/Learn/Learn">here</a>.</p>
+        </div>
+    </div>
+</div>

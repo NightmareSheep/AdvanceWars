@@ -1,0 +1,46 @@
+﻿@page
+@model WolfDen.HostModel
+@{
+    ViewData["Title"] = "Host";
+}
+
+<h1>Host a game</h1>
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input class="form-control" placeholder="Example game name" asp-for="Host.Name" />
+                <span asp-validation-for="Host.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="mapInput">Map</label>
+                <select multiple id="mapInput" class="form-control" asp-for="Host.MapId">
+                    @foreach (var map in Model.Maps)
+                    {
+                        <option value="@map.ID">@map.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input value=True type="radio" checked asp-for="Host.FFA"> Free for all
+                    </label>
+                    <label class="btn btn-primary">
+                        <input value=False type="radio" asp-for="Host.FFA"> Teams
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </div>
+    </div>
+}
+

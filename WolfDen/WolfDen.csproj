@@ -1,0 +1,120 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-WolfDen-226FB76A-5E41-49B7-AAC2-0572A47F3549</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Compile Remove="wwwroot\logs\**" />
+    <Content Remove="logs\**" />
+    <Content Remove="wwwroot\logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <EmbeddedResource Remove="wwwroot\logs\**" />
+    <None Remove="logs\**" />
+    <None Remove="wwwroot\logs\**" />
+    <TypeScriptCompile Remove="logs\**" />
+    <TypeScriptCompile Remove="wwwroot\logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200203064328_MapsAndColors2.cs" />
+    <Compile Remove="Data\Migrations\20200203064328_MapsAndColors2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200203064948_MapsAndColors2.cs" />
+    <Compile Remove="Data\Migrations\20200203064948_MapsAndColors2.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\js\Basic\cookie.ts" />
+    <Content Remove="wwwroot\js\Basic\ErrorHandling.ts" />
+    <Content Remove="wwwroot\js\Basic\Guid.ts" />
+    <Content Remove="wwwroot\js\Basic\helper.ts" />
+    <Content Remove="wwwroot\js\bundle.js.map" />
+    <Content Remove="wwwroot\js\Game\cameraPan.ts" />
+    <Content Remove="wwwroot\js\Game\Hotkeys.ts" />
+    <Content Remove="wwwroot\js\Game\LoadResources.ts" />
+    <Content Remove="wwwroot\js\Game\Main.ts" />
+    <Content Remove="wwwroot\js\Game\PixiFilters.ts" />
+    <Content Remove="wwwroot\js\Game\PriorityQueue.js" />
+    <Content Remove="wwwroot\js\Game\TilesetIndices\Beach.ts" />
+    <Content Remove="wwwroot\js\Game\TilesetIndices\River.ts" />
+    <Content Remove="wwwroot\js\Game\TilesetIndices\Sea.ts" />
+    <Content Remove="wwwroot\ts\del.bat" />
+    <Content Remove="wwwroot\ts\HUD\HUD.ts" />
+    <Content Remove="wwwroot\ts\HUD\PlayerInfo.ts" />
+    <Content Remove="wwwroot\ts\Pages\Join.ts" />
+    <Content Remove="wwwroot\ts\Typings\signalr\signalr.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\js\Basic\cookie.ts" />
+    <None Include="wwwroot\js\Basic\ErrorHandling.ts" />
+    <None Include="wwwroot\js\Basic\Guid.ts" />
+    <None Include="wwwroot\js\Basic\helper.ts" />
+    <None Include="wwwroot\js\Game\cameraPan.ts" />
+    <None Include="wwwroot\js\Game\Hotkeys.ts" />
+    <None Include="wwwroot\js\Game\LoadResources.ts" />
+    <None Include="wwwroot\js\Game\Main.ts" />
+    <None Include="wwwroot\js\Game\ParseReferences.js" />
+    <None Include="wwwroot\js\Game\ParseReferences.js.map" />
+    <None Include="wwwroot\js\Game\PixiFilters.ts" />
+    <None Include="wwwroot\lib\other\PriorityQueue.js" />
+    <None Include="wwwroot\js\Game\TilesetIndices\Beach.ts" />
+    <None Include="wwwroot\js\Game\TilesetIndices\River.ts" />
+    <None Include="wwwroot\js\Game\TilesetIndices\Sea.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.4" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.9.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ts\Indicators\" />
+  </ItemGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2019</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile></TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+</Project>

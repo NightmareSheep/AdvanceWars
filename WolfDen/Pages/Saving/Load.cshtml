@@ -1,0 +1,43 @@
+﻿@page
+@model WolfDen.Pages.LoadModel
+@{
+    ViewData["Title"] = "Load";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Load</h1>
+<div class="row">
+    <div class="col-12">
+
+
+        <table class="table table-hover">
+            <tbody>
+                @foreach (var save in Model.Saves)
+                {
+                <tr>
+                    <td>@save.Name</td>
+
+                    <td style="width:80px;">
+                        <form asp-page-handler="load" method="post">
+                            <button class="btn btn-primary" type="submit" name="saveId" value="@save.SaveId">Load</button>
+                        </form>
+                    </td>
+                    <td style="width:80px;">
+                        <form asp-page-handler="replay" method="post">
+                            <button class="btn btn-secondary" type="submit" name="saveId" value="@save.SaveId">Replay</button>
+                        </form>
+                    </td>
+                    <td style="width:80px;">
+                        <form asp-page-handler="delete" method="post">
+                            <button class="btn btn-danger" type="submit" name="saveId" value="@save.SaveId">Delete</button>
+                        </form>
+                    </td>
+
+                </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+﻿@page
+@model WolfDen.Pages.JoinModel
+
+<h2 id="join">Join a game</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Join link</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: lobbies">
+        <tr>
+            <td scope="col" data-bind="text: name"></td>
+            <td scope="col"><a data-bind="attr: { href: '/Game/Lobby?id=' + id }">Join</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="form-group">
+    <button class="btn btn-primary" data-bind="click: GetLobbies">Refresh</button>
+</div>
+

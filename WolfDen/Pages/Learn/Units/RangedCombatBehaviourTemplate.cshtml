@@ -1,0 +1,10 @@
+﻿@model WolfDen.Game.Behaviours.CombatBehaviour.RangedCombatBehaviourTemplate
+
+<h2>Combat</h2>
+<p>This unit attacks from range. It cannot attack after moving.</p>
+Minimum range: @Model.MinRange <br/>
+Maximum range: @Model.MaxRange
+
+<h3>Damage</h3>
+
+<partial name="DamageChart" model="Model" />

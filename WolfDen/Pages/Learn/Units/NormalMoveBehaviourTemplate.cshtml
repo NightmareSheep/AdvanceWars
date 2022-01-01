@@ -1,0 +1,34 @@
+﻿@model WolfDen.Game.Templates.NormalMoveBehaviourTemplate
+@using WolfDen.Game.Other
+@using WolfDen.Game.Tiles
+@using WolfDen.Game.Factories
+
+<h2>Movement</h2>
+Movement speed: @Model.Speed <br />
+Movement type: @Model.MovementType.ToString()
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Icon</th>
+            <th scope="col">Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var factory = new MapFactory();
+            foreach (var tileType in Enum.GetValues(typeof(TileType)).Cast<TileType>())
+            {
+                int cost;
+                MovementCosts.GetMovementCosts(tileType).TryGetValue(Model.MovementType, out cost);
+                if (cost == 0)
+                    cost = MovementCosts.GetBaseMovementCost(tileType);
+                <tr>
+                    <td>@tileType.ToString()</td>
+                    <td><img height="50" style="image-rendering: pixelated;" src="@("/Images/Learn/Terrain/" + tileType.ToString() + ".png")" /></td>
+                    <td>@(cost < 99 ? Html.Raw(cost) : Html.Raw("&infin;"))</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

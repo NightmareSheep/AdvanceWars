@@ -1,0 +1,35 @@
+﻿@page
+@model WolfDen.HostStepTwoModel
+
+@{
+    ViewData["Title"] = "HostStepTwo";
+}
+
+<h1>Set Teams</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col">
+            @for (var i = 0; i < Model.Map.NumberOfPlayers; i++)
+            {
+                var slot = "slot" + i;
+                <div class="form-group">
+                    <label for="@slot">Slot @i</label>
+                    <select id="@slot" name="Teams" class="form-control">
+                        <option value=0>None</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                    </select>
+                </div>
+            }
+            <input value="@Model.Map.ID" hidden asp-for="MapId" />
+            <input value="@Model.Name" hidden asp-for="Name" />
+            <div class="forms-group">
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block" />
+            </div>
+        </div>
+    </div>
+}

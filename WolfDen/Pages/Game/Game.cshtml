@@ -1,0 +1,76 @@
+﻿@page
+@inject IJsonHelper Json;
+@using WolfDen.Other
+@model WolfDen.Pages.GameModel
+@{
+    Layout = "~/Pages/Shared/_EmptyLayout.cshtml";
+}
+
+@Html.AntiForgeryToken()
+<div id="teamColors" data='@Json.Serialize(Model.TeamColors)'></div>
+<div id="commanders" data='@Json.Serialize(Statics.Commanders)'></div>
+<div onresize="resize()" id="game" gameId="@Model.GameId" userId="@Html.Raw(Model.UserId)"></div>
+<partial name="Replay" />
+
+<a id="saveButton" target="_blank" href="~/Saving/Save?id=@Model.GameId"><img width="50" height="50" src="~/Images/save.png" /></a>
+
+<!-- Shop Modal -->
+<div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="shop">
+            <div class="container-fluid">
+                <div class="row">
+                    <table class="table table-dark table-bordered table-hover" style="margin-bottom:0px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Unit</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: _shopOptions">
+                            <tr class="shop-option" data-bind="click: Click">
+                                <td style="text-align:center;"><img data-bind="attr: { src : '\\Images\\Shop\\' + ShopImage }" width="40" height="40" /></td>
+                                <td class="align-middle" data-bind="text: Name"></td>
+                                <td class="align-middle bg-danger" data-bind="text: Cost, css: { 'bg-danger':  !HaveEnoughGold }"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End turn modal -->
+<div class="modal fade" id="startTurnModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="startTurn">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 style="margin: 0 auto;" data-bind="text: ModalText"></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Game over modal -->
+<div class="modal fade" id="gameOverModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="gameOver">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 style="margin: 0 auto;">Game Over</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/lib/pixi.js/dist/pixi.min.js"></script>
+    <script src="~/lib/other/viewport.js"></script>
+    <script src="~/lib/other/pixi-filters.js"></script>
+    <script src="~/lib/other/PriorityQueue.js"></script>
+}

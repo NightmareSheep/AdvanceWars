@@ -1,0 +1,21 @@
+﻿@page
+@model WolfDen.Pages.Learn.UnitListModel
+@{
+    ViewData["Title"] = "UnitList";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Units</h1>
+<ul>
+    
+</ul>
+
+<div class="row" >
+    @foreach (var unit in Model.Units)
+    {
+        <Div class="col-2 my-2" style="text-align:center;">
+            <a href="@Url.Page("Units/UnitDetails", new { name = unit })"><img src="@("/Images/Learn/" + unit + ".png")" /></a> <br /> 
+            <a href="@Url.Page("Units/UnitDetails", new { name = unit })">@unit </a>
+        </Div>
+    }
+</div>

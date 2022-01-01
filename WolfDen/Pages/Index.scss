@@ -1,0 +1,29 @@
+﻿@media (min-width: 768px) {
+    .Index {
+        padding-top: calc((100vh - 550px) / 2 - 50px);
+        height: 550px;
+    }
+
+    .Index .Message {
+        margin-top: 120px;
+    }
+}
+
+
+.Index .Message {
+    text-align: center;
+}
+
+#speechBox{
+    border:solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 40px;
+    padding:30px;
+}
+
+#speechBoxImg{
+    position: absolute;
+    left:-68px;
+    top:-38px;
+}

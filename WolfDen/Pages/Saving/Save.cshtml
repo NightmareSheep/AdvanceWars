@@ -1,0 +1,33 @@
+﻿@page
+@model WolfDen.Pages.SaveModel
+@{
+    ViewData["Title"] = "Save";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+
+        <h1 id="save">Save</h1>
+
+        <select class="form-control" size="13" id="saves" style="width:100%;">
+            @foreach (var save in Model.Saves)
+            {
+                <option value="@save.Name">@save.Name</option>
+            }
+        </select><br />
+
+        @using (Html.BeginForm())
+        {
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" value="@Model.Id" asp-for="Post.Id" />
+            <div class="form-group">
+                <label for="Name">Name</label>
+                <input id="nameInput" class="form-control" placeholder="Example game name" asp-for="Post.Name" />
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block" />
+                <span asp-validation-for="Post.Name" class="text-danger"></span>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+﻿@page
+@model WolfDen.Pages.LogsModel
+@{
+    ViewData["Title"] = "Logs";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Logs</h1>
+
+@foreach(var log in Model.Logs)
+{
+    <a href="~/logs/@log" >@log</a> <br />
+}
+

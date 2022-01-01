@@ -1,0 +1,15 @@
+﻿@page
+@model WolfDen.Pages.Learn.UnitDetailModel
+@{
+    ViewData["Title"] = "UnitOverview";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+
+<partial name="@("Description" + Model.Unit.Name)" optional="true" />
+
+@foreach (var template in Model.Unit.BehaviourTemplates)
+{
+    <partial name="@(template.GetType().Name)" model="template" optional="true" />
+}

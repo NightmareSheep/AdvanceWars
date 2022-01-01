@@ -1,0 +1,138 @@
+﻿@page
+@model WolfDen.LobbyModel
+
+<div id="lobby" lobbyId="@Model.Lobby.Id" userId="@Model.UserId">
+    <div class="row">
+        <div class="col">
+            <h1>@Model.Lobby.Name</h1>
+        </div>
+    </div>
+    <div class="row my-4 shadow bg-white">
+        <div class="col">
+            <div id="main-grid-container">
+                <div id="commander">
+                    <div id="dropdown-commanders">
+                        @foreach (var co in Model.Lobby.AdvanceWarsSlots[0].Commander.AvailableCommanders)
+                        {
+                            <img class="select-commander" co="@co" height="216" src="@("/Images/CO/" + co + "Big.png")" />
+                        }
+                    </div>
+                    <img id="selected-commander" height="216" src="/Images/CO/ColinBig.png" />
+                    <div class="triangle"></div>
+                </div>
+                <div id="color" style="background-color:red">
+                    <div id="dropdown-colors">
+                        <div class="color-grid-container">
+                            @foreach (var color in Model.Lobby.AdvanceWarsSlots[0].Color.Colors)
+                            {
+                                <div class="grid-color-option" color="@color.ID" style="background-color: @color.Name">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="triangle"></div>
+                </div>
+                <div id="position">
+                    <div id="positionText"><b>Team</b></div>
+                    <div id="positionNumber"><b></b> </div>
+                </div>
+                <div id="information"></div>
+                <div id="map"></div>
+                <div id="ready"><button id="ready-button" type="button" class="btn btn-lg btn-block btn-warning">Click here to ready up</button></div>
+            </div>
+        </div>
+    </div>
+
+    @for (int i = 0; i < Model.Lobby.Slots.Count(); i++)
+    {
+        <div id="@("slot" + i)" class="row my-2 shadow bg-white">
+            <div class="col ">
+                <div class="grid-container">
+                    <div class="slotCommander">
+                        <img width="48" height="48" src="/Images/CO/Colin.png" />
+                    </div>
+                    <div class="slotColor">
+
+                    </div>
+                    <div class="slotTeam"></div>
+                    <div class="slotName">
+                        <h3>--Empty--</h3>
+                    </div>
+                    <div class="slotStatus">
+                        <h3 class="text-danger">Not ready</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" asp-for="GameId" value="@Model.Lobby.Id">
+    <input id="submit" type="submit" value="Submit" style="display:none">
+}
+
+
+
+@*<div class="row">
+        <div class="col pt-5 pb-5">
+            <h1>@Model.Lobby.Name</h1>
+            <div id="lobby" lobbyId="@Model.Lobby.Id" userId="@Model.UserId"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="form-group">
+                <button class="btn btn-primary btn-block btn-lg" data-bind="click: ReadyClick">Ready</button>
+            </div>
+            <div class="chat">
+                <div class="form-group">
+                    <label class="col-form-label" for="sendMessage">Chat</label>
+                    <input class="form-control" id="sendMessage" type="text">
+                </div>
+                <div class="jumbotron bg-light" id="chat" style="height: 100%;">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8" style="text-align:center;" data-bind="foreach: Teams">
+            <div class="card text-white bg-light mb-3 mr-3">
+                <div class="card-header" data-bind="text: TeamNumber == 0 ? 'Free for all' : 'team ' + TeamNumber ">team 1</div>
+                <div class="card-body p-1" style="text-align:center;" data-bind="foreach: Slots">
+                    <div class="playerCard card text-white bg-success m-1" style="width:150px;" data-bind="css: {'bg-dark': ObservableLobbyPlayer() == null || !LobbyPlayer.ObservableReady()}">
+                        <div class="card-header" data-bind="text: ObservableLobbyPlayer() != null ? ObservableLobbyPlayer().Name : '-click to swap-', css: { 'bg-primary': isCurrentPlayerObservable() }, click: window.switchClick">-click to join-</div>
+                        <div class="card-body" data-bind="click: CommanderOption.CommanderModal">
+                            <img data-bind="attr:{src: '../../Content/Images/CO/' + CommanderOption.ObservableCommander() + 'Big.png'}" />
+                        </div>
+                        <div class="card-footer" style="height:40px;" data-bind="style:{ 'background-color' :  ColorOption.ObservableTeamColor().Name }, click: ColorOption.ColorModal"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+
+    </div>
+
+    @Html.ActionLink("game", "Index", "Game", new { id = Model.Id }, new { id = "gameLink", @style = "display:none" })
+    @Html.ActionLink("game", "Index", "Game", null, null, "fullscreen", new { id = Model.Lobby.Id }, new { id = "gameLink", @style = "display:none" })
+
+        Commander Modal
+    <div class="modal fade" id="coModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="shop">
+                <div class="container-fluid">
+                    <div class="row" data-bind="with: CurrentPlayerSlot().CommanderOption">
+                        <div class="col-md-12 selectCommander" data-bind="foreach: AvailableCommanders">
+                            <img data-bind="attr: { src : '..\\..\\Content\\Images\\CO\\' + $data + 'Big.png' }, click: function(data, event)  { $parent.SelectCommander($parent, $data) }" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+

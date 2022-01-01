@@ -1,0 +1,27 @@
+﻿@model WolfDen.Game.Behaviours.CombatBehaviour.NormalCombatBehaviourTemplate
+@using WolfDen.Game
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Icon</th>
+            <th scope="col">Damage dealt</th>
+            <th scope="col">Damage taken</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var unitType in Enum.GetValues(typeof(UnitType)).Cast<UnitType>())
+        {
+            if (unitType == UnitType.None)
+                continue;
+
+        <tr>
+            <td>@unitType.ToString()</td>
+            <td><img src="@("/Images/Learn/" + unitType.ToString() + ".png")" /></td>
+            <td>@(Model.DamageChart.BaseDamage(Model.UnitType, unitType))</td>
+            <td>@(Model.DamageChart.BaseDamage(unitType, Model.UnitType))</td>
+        </tr>
+        }
+    </tbody>
+</table>

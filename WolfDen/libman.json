@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "pixi.js@5.2.1",
+      "destination": "wwwroot/lib/pixi.js/",
+      "files": [
+        "dist/pixi.min.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "knockout@3.5.0",
+      "destination": "wwwroot/lib/knockout/"
+    },
+    {
+      "library": "@microsoft/signalr@3.1.2",
+      "destination": "wwwroot/lib/signalr/",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.min.js",
+        "dist/browser/signalr.js.map",
+        "dist/browser/signalr.min.js.map"
+      ]
+    },
+    {
+      "library": "strongly-typed-events@1.6.17",
+      "destination": "wwwroot/lib/strongly-typed-events/"
+    }
+  ]
+}

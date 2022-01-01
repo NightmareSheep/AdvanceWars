@@ -1,0 +1,23 @@
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using WolfDen.Models.SaveAndLoad;
+
+namespace WolfDen.Models
+{
+    public class ApplicationUser : IdentityUser
+    {
+        public bool Guest { get; set; }
+
+        /// <summary>
+        /// Guests have a guid behind their name, this removes the guid and replaces it with a guest tag.
+        /// </summary>
+        public string DisplayName { get { return !Guest ? UserName : "Guest " + UserName.Substring(0, UserName.Length - 36); } }
+        public DateTimeOffset LastLoginDate { get; set; }
+        public List<Save> Saves { get; set; }
+
+
+    }
+}
